@@ -6,7 +6,9 @@ const dotenv=require('dotenv');
 dotenv.config();
 app.use(express.json());
 
-
+app.get('/',(req,res)=>{
+    res.send('server is running');
+});
 
 // Add School API
 app.post('/addSchool', (req, res) => {
