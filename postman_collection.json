@@ -1,0 +1,43 @@
+{
+    "info": {
+        "name": "School Management APIs",
+        "_postman_id": "",
+        "description": "APIs for adding and listing schools.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Add School",
+            "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"ABC School\",\n    \"address\": \"123 Street, City\",\n    \"latitude\": 19.123,\n    \"longitude\": 72.456\n}"
+                },
+                "url": {
+                    "raw": "https://school-management-gold.vercel.app/addSchool",
+                    "protocol": "https",
+                    "host": ["school-management-gold", "vercel", "app"],
+                    "path": ["addSchool"]
+                }
+            }
+        },
+        {
+            "name": "List Schools",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "https://school-management-gold.vercel.app/listSchools?latitude=19.123&longitude=72.456",
+                    "protocol": "https",
+                    "host": ["school-management-gold", "vercel", "app"],
+                    "path": ["listSchools"],
+                    "query": [
+                        { "key": "latitude", "value": "19.123" },
+                        { "key": "longitude", "value": "72.456" }
+                    ]
+                }
+            }
+        }
+    ]
+}

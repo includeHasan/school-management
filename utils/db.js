@@ -2,30 +2,29 @@ const mysql = require('mysql2');
 const dotenv = require('dotenv');
 dotenv.config();
 
-
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    port: 27738, 
-    ssl:false
+    port: 27738,
+    ssl: false
 });
+
 
 db.connect((err) => {
     if (err) throw err;
     console.log('MySQL connected...');
-    
-    // Create Database
-    db.query('CREATE DATABASE IF NOT EXISTS school_management', (err, result) => {
+
+    db.query('CREATE DATABASE IF NOT EXISTS school_management', (err) => {
         if (err) throw err;
         console.log('Database created or already exists.');
 
-        
+      
         db.query('USE school_management', (err) => {
             if (err) throw err;
             console.log('Using database school_management.');
 
-            
+            // Create table
             const createTableQuery = `
                 CREATE TABLE IF NOT EXISTS schools (
                     id INT AUTO_INCREMENT PRIMARY KEY,
